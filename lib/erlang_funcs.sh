@@ -15,7 +15,7 @@ function download_erlang() {
 
     output_section "Fetching Erlang ${erlang_version}"
     echo "base: ${erlang_package_base}"
-    echo "url: '${erlang_package_url}'"
+    echo "url"
     curl -s "${erlang_package_url}" -o "${cache_path}/OTP-${erlang_version}.tar.gz" || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"

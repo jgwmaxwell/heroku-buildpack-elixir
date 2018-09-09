@@ -3,8 +3,8 @@ function erlang_tarball() {
 }
 
 function download_erlang() {
-  erlang_package_url="https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14"
-  erlang_package_url="${erlang_package_url}/$(erlang_tarball)"
+  erlang_package_base="https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14"
+  erlang_package_url="${erlang_package_base}/$(erlang_tarball)"
 
   # If a previous download does not exist, then always re-download
   if [ ! -f ${cache_path}/$(erlang_tarball) ]; then
@@ -14,6 +14,7 @@ function download_erlang() {
     erlang_changed=true
 
     output_section "Fetching Erlang ${erlang_version}"
+    echo "base: ${erlang_package_base}"
     echo "url: '${erlang_package_url}'"
     curl -s ${erlang_package_url} -o ${cache_path}/$(erlang_tarball) || exit 1
   else

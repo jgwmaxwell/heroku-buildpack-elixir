@@ -16,7 +16,7 @@ function download_erlang() {
     output_section "Fetching Erlang ${erlang_version}"
     echo "base: ${erlang_package_base}"
     echo "url: '${erlang_package_url}'"
-    curl -s ${erlang_package_url} -o ${cache_path}/$(erlang_tarball) || exit 1
+    curl -s "${erlang_package_url}" -o "${cache_path}/$(erlang_tarball)" || exit 1
   else
     output_section "Using cached Erlang ${erlang_version}"
   fi
@@ -31,7 +31,7 @@ function install_erlang() {
 
   rm -rf $(erlang_build_path)
   mkdir -p $(erlang_build_path)
-  tar zxf ${cache_path}/$(erlang_tarball) -C $(erlang_build_path) --strip-components=1
+  tar zxf "${cache_path}/$(erlang_tarball)" -C $(erlang_build_path) --strip-components=1
 
   rm -rf $(runtime_erlang_path)
   mkdir -p $(runtime_platform_tools_path)
